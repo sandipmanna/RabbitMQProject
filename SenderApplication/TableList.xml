@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TableList>
+  <Item value="_H_HHAFormsAudit" Text="_H_HHAFormsAudit"></Item>
+  <Item value="_H_AuditCDSPlanYear" Text="_H_AuditCDSPlanYear"></Item>
+  <Item value="_H_PaymentActivityLog" Text="_H_PaymentActivityLog"></Item>
+  <Item value="_H_ClaimActivityLog" Text="_H_ClaimActivityLog"></Item>
+  <Item value="_H_BillingActivityLog" Text="_H_BillingActivityLog"></Item>
+</TableList>  
