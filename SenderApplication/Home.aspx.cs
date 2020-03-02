@@ -18,44 +18,24 @@ namespace SenderApplication
         {
             if (!IsPostBack)
             {
-                ddlTable.DataSourceID = "xmlTableList";
-                ddlTable.DataTextField = "Text";
-                ddlTable.DataValueField = "value";
-                ddlTable.DataBind();
-                ddlTable.Items.Insert(0, new ListItem("Select", "Select"));
+                
             }
         }
 
-        protected void BtnAudit_Click(object sender, EventArgs e)
+        protected void btnMessage_Click(object sender, EventArgs e)
         {
             try
             {
-                string TableName = ddlTable.SelectedValue;
                 string DBServerName = Utility.GetConfigParam<string>("DBServerName");
                 string DBName = Utility.GetConfigParam<string>("DBName");
                 List<UserEventDTO> auditRecordList = new List<UserEventDTO>();
-                //AccessLayer.FetchDataFromSQL(DBServerName, DBName, TableName, out auditRecordList);
-                //auditRecordList.Take(2);
-                //string out_Query = "{'AuditObject':[{'Org_id':1,'userid':1,'AuditTime':'2019 - 11 - 15T18: 33:23.403','branchID':null,'EMRActiontype':'Added Document'," +
-                //    "'EMRActionid':25,'severity':1,'restype':'Payments','resids':'PaymentMasterID = 105722 / PaymentNo = / UserType = / ClaimID = 0/ ClaimNo = / IsAuditNotShow = 0'," +
-                //    "'resdata_json':{'data':'{\"Audittext\":\"Document test.txt Added. \", \"Page\":\"\", \"SQLAuditID\":\"0\", \"PayerType\":\"\", \"payerID\":\"0\", \"EpisodeID\":\"0\", " +
-                //    "\"IsSingleActivity\":\"1\", \"IsGroupActivity\":\"1\", \"OldBalance\":\"\", \"LegacyAccountAmount\":\"\", \"NewBalance\":\"0.00\", " +
-                //    "\"PaymentAmount\":\"905.00\", \"UnappliedCreditBalance\":\"\", \"ProcedureName\":\"_CL_AddNewDocument\", \"ParentActivityName\":\"AddDocument\"}'}," +
-                //    "'restaction':1}]}";
 
-                string out_Query = @"{""AuditObject"":[{""Org_id"":1,""userid"":1,""AuditTime"":""2019 - 11 - 15T18: 33:23.403"",""branchID"":null, ""EMRActiontype"":""Added Document"", ""EMRActionid"":25,""severity"":1,""restype"":""Payments"",""resids"":""PaymentMasterID = 105722 / PaymentNo = / UserType = / ClaimID = 0/ ClaimNo = / IsAuditNotShow = 0"",""resdata_json"":{""Audittext"":""Document test.txt Added. "", ""Page"":"""", ""SQLAuditID"":""0"", ""PayerType"":"""", ""payerID"":""0"", ""EpisodeID"":""0"", ""IsSingleActivity"":""1"", ""IsGroupActivity"":""1"", ""OldBalance"":"""", ""LegacyAccountAmount"":"""", ""NewBalance"":""0.00"", ""PaymentAmount"":""905.00"", ""UnappliedCreditBalance"":"""", ""ProcedureName"":""_CL_AddNewDocument"", ""ParentActivityName"":""AddDocument""},""restaction"":1}]}";
-
-
-
-                //string out_Query = @"{""AuditObject"": {""FName"":""Sandip"", ""OrgID"":1}}";
-
-                //if (auditRecordList.Count > 0)
-                //    InsertQueryBuilder(auditRecordList, out out_Query);
-                //var HAA = auditRecordList.Select(x => new { orgid = x.OrgId }).FirstOrDefault();
-                if (out_Query != "")
+                string Message = txtMessage.Text;
+                
+                if (Message != "")
                 {
                     IDataChangesPublisher dataChangesPublisher = new DataChangesPublisher();
-                    dataChangesPublisher.PublishAuditLogData(1, 12, 12, out_Query);
+                    dataChangesPublisher.PublishAuditLogData(1, 12, 12, Message);
                 }
             }
             catch (Exception ex)
@@ -99,7 +79,7 @@ namespace SenderApplication
             }
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
+        protected void btnFetchData_Click(object sender, EventArgs e)
         {
             try
             {

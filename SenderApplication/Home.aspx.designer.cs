@@ -13,30 +13,30 @@ namespace SenderApplication {
     public partial class Home {
         
         /// <summary>
-        /// ddlTable control.
+        /// txtMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTable;
+        protected global::System.Web.UI.WebControls.TextBox txtMessage;
         
         /// <summary>
-        /// xmlTableList control.
+        /// btnMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource xmlTableList;
+        protected global::System.Web.UI.WebControls.Button btnMessage;
         
         /// <summary>
-        /// btnAudit control.
+        /// btnFetchData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAudit;
+        protected global::System.Web.UI.WebControls.Button btnFetchData;
     }
 }

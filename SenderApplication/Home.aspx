@@ -1,21 +1,39 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="SenderApplication.Home" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .DropDown {
-            border-radius: 4px
-        }
 
-    </style>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
     <div style="margin-top: 5%; display: flex">
-        Select Table &nbsp;
-        <asp:DropDownList CssClass="DropDown" ID="ddlTable" ClientIDMode="Static" runat="server"></asp:DropDownList>
-        <asp:XmlDataSource ID="xmlTableList" runat="server" DataFile="~/TableList.xml"></asp:XmlDataSource>
         <div style="margin-left: 6px">
-            <asp:Button Text="Audit Data" runat="server" style="border-radius: 5px" ID="btnAudit" OnClick="BtnAudit_Click" />
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <asp:TextBox runat="server" ClientIDMode="Static" ID="txtMessage" Style="border-radius: 5px" />
+                        </td>
+                        <td style="padding-left: 10px">
+                            <asp:Button Text="Send Message" runat="server" Style="border-radius: 5px" ID="btnMessage" OnClick="btnMessage_Click" OnClientClick="return ValidateMessage();" CssClass="btn btn-primary" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top: 10px">
+                            <asp:Button Text="Fetch Record(s)" runat="server" ClientIDMode="Static" ID="btnFetchData" OnClick="btnFetchData_Click" CssClass="btn btn-primary" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div>
-        <input type="text" name="name" value="" />
-        <asp:Button Text="Search" runat="server" OnClick="Unnamed_Click" />
     </div>
+    <script>
+        function ValidateMessage() {
+            var Message = $('#txtMessage').val();
+            if (Message == "") {
+                alert("Provide Message !!");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </asp:Content>
